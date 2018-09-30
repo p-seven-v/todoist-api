@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": "^7.0.4",
+        "ext-json": "*",
         "guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
@@ -19,6 +20,11 @@
     "autoload": {
         "psr-4": {
             "P7v\\Todoist\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
         }
     },
     "minimum-stability": "stable",
