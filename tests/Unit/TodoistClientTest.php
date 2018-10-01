@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit;
 
@@ -24,30 +26,30 @@ class TodoistClientTest extends TestCase
     {
         $response = [
             [
-                'id' => 1,
-                'name' => 'Inbox',
-                'order' => 0,
-                'indent' => 1,
-                'comment_count' => 0
+                'id'            => 1,
+                'name'          => 'Inbox',
+                'order'         => 0,
+                'indent'        => 1,
+                'comment_count' => 0,
             ],
             [
-                'id' => 2,
-                'name' => 'Personal',
-                'order' => 1,
-                'indent' => 1,
-                'comment_count' => 3
+                'id'            => 2,
+                'name'          => 'Personal',
+                'order'         => 1,
+                'indent'        => 1,
+                'comment_count' => 3,
             ],
             [
-                'id' => 3,
-                'name' => 'Work',
-                'order' => 2,
-                'indent' => 1,
-                'comment_count' => 4
+                'id'            => 3,
+                'name'          => 'Work',
+                'order'         => 2,
+                'indent'        => 1,
+                'comment_count' => 4,
             ],
         ];
 
         $mockHandler = new MockHandler([
-            new Response(200, [], json_encode($response))
+            new Response(200, [], json_encode($response)),
         ]);
         $guzzle = new Client(['handler' => $mockHandler]);
 

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace P7v\Todoist;
 
@@ -24,12 +26,12 @@ class TodoistClient
     {
         $this->httpClient = $httpClient ?? new Client([
             'base_uri' => 'https://beta.todoist.com/API/v8/',
-            'headers' => [
-                'Authorization' => 'Bearer ' . $this->token,
+            'headers'  => [
+                'Authorization' => 'Bearer '.$this->token,
             ],
-            RequestOptions::TIMEOUT => 1,
+            RequestOptions::TIMEOUT         => 1,
             RequestOptions::CONNECT_TIMEOUT => 1,
-            RequestOptions::READ_TIMEOUT => 1,
+            RequestOptions::READ_TIMEOUT    => 1,
         ]);
     }
 
