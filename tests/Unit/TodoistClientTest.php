@@ -3,11 +3,11 @@
 namespace Tests\Unit;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Psr7\Response;
-use P7v\Todoist\Entities\Project;
 use P7v\Todoist\TodoistClient;
 use PHPUnit\Framework\TestCase;
+use P7v\Todoist\Entities\Project;
+use GuzzleHttp\Handler\MockHandler;
 
 class TodoistClientTest extends TestCase
 {
