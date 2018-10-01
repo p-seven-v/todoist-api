@@ -26,24 +26,24 @@ class TodoistClientTest extends TestCase
     {
         $response = [
             [
-                'id'            => 1,
-                'name'          => 'Inbox',
-                'order'         => 0,
-                'indent'        => 1,
+                'id' => 1,
+                'name' => 'Inbox',
+                'order' => 0,
+                'indent' => 1,
                 'comment_count' => 0,
             ],
             [
-                'id'            => 2,
-                'name'          => 'Personal',
-                'order'         => 1,
-                'indent'        => 1,
+                'id' => 2,
+                'name' => 'Personal',
+                'order' => 1,
+                'indent' => 1,
                 'comment_count' => 3,
             ],
             [
-                'id'            => 3,
-                'name'          => 'Work',
-                'order'         => 2,
-                'indent'        => 1,
+                'id' => 3,
+                'name' => 'Work',
+                'order' => 2,
+                'indent' => 1,
                 'comment_count' => 4,
             ],
         ];
@@ -67,5 +67,33 @@ class TodoistClientTest extends TestCase
             $this->assertEquals($response[$i]['indent'], $projects[$i]->getIndent());
             $this->assertEquals($response[$i]['comment_count'], $projects[$i]->getCommentCount());
         }
+    }
+
+    /** @test */
+    public function it_creates_new_project()
+    {
+        $response = [
+            'id' => 1111,
+            'name' => 'New project 22',
+            'order' => 30,
+            'indent' => 1,
+            'comment_count' => 0
+        ];
+
+        $mockHandler = new MockHandler([
+            new Response(200, [], json_encode($response))
+        ]);
+
+        $guzzle = new Client(['handler' => $mockHandler]);
+
+        $client = new TodoistClient('random_token', $guzzle);
+
+        $newProject = $client->createNewProject('New project 22');
+
+        $this->assertEquals(1111, $newProject->getId());
+        $this->assertEquals('New project 22', $newProject->getName());
+        $this->assertEquals(30, $newProject->getOrder());
+        $this->assertEquals(1, $newProject->getIndent());
+        $this->assertEquals(0, $newProject->getCommentCount());
     }
 }
