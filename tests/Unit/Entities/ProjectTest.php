@@ -60,5 +60,4 @@ class ProjectTest extends TestCase
 
         $this->assertEquals(14, $this->subject->getCommentCount());
     }
-
 }
