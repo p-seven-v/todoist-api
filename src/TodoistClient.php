@@ -4,6 +4,7 @@ namespace P7v\Todoist;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
+use P7v\Todoist\Entities\Project;
 
 class TodoistClient
 {
@@ -13,15 +14,15 @@ class TodoistClient
     /** @var Client */
     private $httpClient;
 
-    public function __construct(string $token)
+    public function __construct(string $token, Client $httpClient = null)
     {
         $this->token = $token;
-        $this->initializeHttpClient();
+        $this->initializeHttpClient($httpClient);
     }
 
-    private function initializeHttpClient()
+    private function initializeHttpClient(Client $httpClient = null)
     {
-        $this->httpClient = new Client([
+        $this->httpClient = $httpClient ?? new Client([
             'base_uri' => 'https://beta.todoist.com/API/v8/',
             'headers' => [
                 'Authorization' => 'Bearer ' . $this->token,
@@ -32,12 +33,19 @@ class TodoistClient
         ]);
     }
 
+    /**
+     * @return Project[]
+     */
     public function getAllProjects(): array
     {
         $response = $this->httpClient->get('projects')
             ->getBody()
             ->getContents();
 
-        return json_decode($response, true);
+        $records = json_decode($response, true);
+
+        return array_map(function (array $record) {
+            return new Project($record['id'], $record['name'], $record['order'], $record['indent'], $record['comment_count']);
+        }, $records);
     }
 }
