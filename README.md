@@ -1,10 +1,8 @@
 # Todoist API - PHP Client
 
-<p align="center">
-<a href="https://travis-ci.org/p-seven-v/todoist-api"><img src="https://travis-ci.org/p-seven-v/todoist-api.svg?branch=master" alt="Build Status"></a>
-<a href="https://github.styleci.io/repos/151002191"><img src="https://github.styleci.io/repos/151002191/shield?branch=master" alt="StyleCI"></a>
-</p>
-[![StyleCI](https://github.styleci.io/repos/151002191/shield?branch=master)](https://github.styleci.io/repos/151002191)
+[![Build Status](https://travis-ci.org/p-seven-v/todoist-api.svg?branch=master)](https://travis-ci.org/p-seven-v/todoist-api)
+[![StyleCI](https://styleci.io/repos/65558300/shield)](https://styleci.io/repos/65558300)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 A PHP client for the official Todoist REST API (v8).
 
