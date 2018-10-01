@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Entities;
 
-use P7v\Todoist\Entities\Project;
 use PHPUnit\Framework\TestCase;
+use P7v\Todoist\Entities\Project;
 
 class ProjectTest extends TestCase
 {
