@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests\Unit\Entities;
 
-use PHPUnit\Framework\TestCase;
 use P7v\Todoist\Entities\Project;
+use PHPUnit\Framework\TestCase;
 
 class ProjectTest extends TestCase
 {
