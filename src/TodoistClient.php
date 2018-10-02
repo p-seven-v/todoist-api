@@ -67,6 +67,7 @@ class TodoistClient
     public function getProject(int $id): Project
     {
         $url = 'projects/' . $id;
+
         $response = $this->httpClient->get($url)
             ->getBody()
             ->getContents();
@@ -89,7 +90,7 @@ class TodoistClient
         return true;
     }
 
-    public function deleteProject(Project $project)
+    public function deleteProject(Project $project): bool
     {
         $url = 'projects/' . $project->getId();
 
