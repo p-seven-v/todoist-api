@@ -124,4 +124,31 @@ class TodoistClientTest extends TestCase
         $this->assertEquals(1, $project->getIndent());
         $this->assertEquals(0, $project->getCommentCount());
     }
+
+    /** @test */
+    public function it_updates_project_data()
+    {
+        $response = [
+            'id' => 1,
+            'name' => 'Inbox',
+            'order' => 0,
+            'indent' => 1,
+            'comment_count' => 0,
+        ];
+
+        $handler = new MockHandler([
+            new Response(200, [], json_encode($response)),
+            new Response(204)
+        ]);
+
+        $guzzle = new Client(compact('handler'));
+
+        $client = new TodoistClient('random_token', $guzzle);
+
+        $project = $client->getProject(1);
+
+        $project->setName('Inbox 2');
+
+        $this->assertTrue($client->updateProject($project));
+    }
 }
