@@ -88,4 +88,13 @@ class TodoistClient
 
         return true;
     }
+
+    public function deleteProject(Project $project)
+    {
+        $url = 'projects/' . $project->getId();
+
+        $this->httpClient->delete($url);
+
+        return true;
+    }
 }
