@@ -151,4 +151,29 @@ class TodoistClientTest extends TestCase
 
         $this->assertTrue($client->updateProject($project));
     }
+
+    /** @test */
+    public function it_deletes_project()
+    {
+        $response = [
+            'id' => 1,
+            'name' => 'Inbox',
+            'order' => 0,
+            'indent' => 1,
+            'comment_count' => 0,
+        ];
+
+        $handler = new MockHandler([
+            new Response(200, [], json_encode($response)),
+            new Response(204)
+        ]);
+
+        $guzzle = new Client(compact('handler'));
+
+        $client = new TodoistClient('random_token', $guzzle);
+
+        $project = $client->getProject(1);
+
+        $this->assertTrue($client->deleteProject($project));
+    }
 }
