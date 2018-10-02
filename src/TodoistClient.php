@@ -63,4 +63,16 @@ class TodoistClient
 
         return new Project($record['id'], $record['name'], $record['order'], $record['indent'], $record['comment_count']);
     }
+
+    public function getProject(int $int): Project
+    {
+        $url = 'projects/' . $int;
+        $response = $this->httpClient->get($url)
+            ->getBody()
+            ->getContents();
+
+        $record = json_decode($response, true);
+
+        return new Project($record['id'], $record['name'], $record['order'], $record['indent'], $record['comment_count']);
+    }
 }
