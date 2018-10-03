@@ -77,11 +77,11 @@ class TodoistClientTest extends TestCase
             'name' => 'New project 22',
             'order' => 30,
             'indent' => 1,
-            'comment_count' => 0
+            'comment_count' => 0,
         ];
 
         $mockHandler = new MockHandler([
-            new Response(200, [], json_encode($response))
+            new Response(200, [], json_encode($response)),
         ]);
 
         $guzzle = new Client(['handler' => $mockHandler]);
@@ -109,7 +109,7 @@ class TodoistClientTest extends TestCase
         ];
 
         $mockHandler = new MockHandler([
-            new Response(200, [], json_encode($response))
+            new Response(200, [], json_encode($response)),
         ]);
 
         $guzzle = new Client(['handler' => $mockHandler]);
@@ -138,7 +138,7 @@ class TodoistClientTest extends TestCase
 
         $handler = new MockHandler([
             new Response(200, [], json_encode($response)),
-            new Response(204)
+            new Response(204),
         ]);
 
         $guzzle = new Client(compact('handler'));
@@ -165,7 +165,7 @@ class TodoistClientTest extends TestCase
 
         $handler = new MockHandler([
             new Response(200, [], json_encode($response)),
-            new Response(204)
+            new Response(204),
         ]);
 
         $guzzle = new Client(compact('handler'));
