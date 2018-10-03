@@ -27,7 +27,7 @@ class TodoistClient
         $this->httpClient = $httpClient ?? new Client([
             'base_uri' => 'https://beta.todoist.com/API/v8/',
             'headers'  => [
-                'Authorization' => 'Bearer '.$this->token,
+                'Authorization' => 'Bearer ' . $this->token,
             ],
             RequestOptions::TIMEOUT         => 1,
             RequestOptions::CONNECT_TIMEOUT => 1,
