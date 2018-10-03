@@ -55,8 +55,8 @@ class TodoistClient
     {
         $response = $this->httpClient->post('projects', [
             'json' => [
-                'name' => $name
-            ]
+                'name' => $name,
+            ],
         ])->getBody()->getContents();
 
         $record = json_decode($response, true);
@@ -84,7 +84,7 @@ class TodoistClient
         $this->httpClient->post($url, [
             'json' => [
                 'name' => $project->getName(),
-            ]
+            ],
         ]);
 
         return true;
