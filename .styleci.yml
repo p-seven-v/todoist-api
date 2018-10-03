@@ -1,4 +1,1 @@
-preset: psr-2
-
-enabled:
-- length_ordered_imports
+preset: recommended
