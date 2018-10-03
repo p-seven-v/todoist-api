@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Tests\Unit;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Psr7\Response;
+use P7v\Todoist\Entities\Project;
 use P7v\Todoist\TodoistClient;
 use PHPUnit\Framework\TestCase;
-use P7v\Todoist\Entities\Project;
-use GuzzleHttp\Handler\MockHandler;
 
 class TodoistClientTest extends TestCase
 {
@@ -26,24 +26,24 @@ class TodoistClientTest extends TestCase
     {
         $response = [
             [
-                'id' => 1,
-                'name' => 'Inbox',
-                'order' => 0,
-                'indent' => 1,
+                'id'            => 1,
+                'name'          => 'Inbox',
+                'order'         => 0,
+                'indent'        => 1,
                 'comment_count' => 0,
             ],
             [
-                'id' => 2,
-                'name' => 'Personal',
-                'order' => 1,
-                'indent' => 1,
+                'id'            => 2,
+                'name'          => 'Personal',
+                'order'         => 1,
+                'indent'        => 1,
                 'comment_count' => 3,
             ],
             [
-                'id' => 3,
-                'name' => 'Work',
-                'order' => 2,
-                'indent' => 1,
+                'id'            => 3,
+                'name'          => 'Work',
+                'order'         => 2,
+                'indent'        => 1,
                 'comment_count' => 4,
             ],
         ];
@@ -73,15 +73,15 @@ class TodoistClientTest extends TestCase
     public function it_creates_new_project()
     {
         $response = [
-            'id' => 1111,
-            'name' => 'New project 22',
-            'order' => 30,
-            'indent' => 1,
-            'comment_count' => 0
+            'id'            => 1111,
+            'name'          => 'New project 22',
+            'order'         => 30,
+            'indent'        => 1,
+            'comment_count' => 0,
         ];
 
         $mockHandler = new MockHandler([
-            new Response(200, [], json_encode($response))
+            new Response(200, [], json_encode($response)),
         ]);
 
         $guzzle = new Client(['handler' => $mockHandler]);
@@ -101,15 +101,15 @@ class TodoistClientTest extends TestCase
     public function it_fetches_one_project_by_id()
     {
         $response = [
-            'id' => 1,
-            'name' => 'Inbox',
-            'order' => 0,
-            'indent' => 1,
+            'id'            => 1,
+            'name'          => 'Inbox',
+            'order'         => 0,
+            'indent'        => 1,
             'comment_count' => 0,
         ];
 
         $mockHandler = new MockHandler([
-            new Response(200, [], json_encode($response))
+            new Response(200, [], json_encode($response)),
         ]);
 
         $guzzle = new Client(['handler' => $mockHandler]);
@@ -129,16 +129,16 @@ class TodoistClientTest extends TestCase
     public function it_updates_project_data()
     {
         $response = [
-            'id' => 1,
-            'name' => 'Inbox',
-            'order' => 0,
-            'indent' => 1,
+            'id'            => 1,
+            'name'          => 'Inbox',
+            'order'         => 0,
+            'indent'        => 1,
             'comment_count' => 0,
         ];
 
         $handler = new MockHandler([
             new Response(200, [], json_encode($response)),
-            new Response(204)
+            new Response(204),
         ]);
 
         $guzzle = new Client(compact('handler'));
@@ -156,16 +156,16 @@ class TodoistClientTest extends TestCase
     public function it_deletes_project()
     {
         $response = [
-            'id' => 1,
-            'name' => 'Inbox',
-            'order' => 0,
-            'indent' => 1,
+            'id'            => 1,
+            'name'          => 'Inbox',
+            'order'         => 0,
+            'indent'        => 1,
             'comment_count' => 0,
         ];
 
         $handler = new MockHandler([
             new Response(200, [], json_encode($response)),
-            new Response(204)
+            new Response(204),
         ]);
 
         $guzzle = new Client(compact('handler'));
