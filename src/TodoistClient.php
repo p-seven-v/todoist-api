@@ -27,7 +27,7 @@ class TodoistClient
         $this->httpClient = $httpClient ?? new Client([
             'base_uri' => 'https://beta.todoist.com/API/v8/',
             'headers'  => [
-                'Authorization' => 'Bearer ' . $this->token,
+                'Authorization' => 'Bearer '.$this->token,
             ],
             RequestOptions::TIMEOUT         => 1,
             RequestOptions::CONNECT_TIMEOUT => 1,
@@ -55,8 +55,8 @@ class TodoistClient
     {
         $response = $this->httpClient->post('projects', [
             'json' => [
-                'name' => $name
-            ]
+                'name' => $name,
+            ],
         ])->getBody()->getContents();
 
         $record = json_decode($response, true);
@@ -66,7 +66,7 @@ class TodoistClient
 
     public function getProject(int $id): Project
     {
-        $url = 'projects/' . $id;
+        $url = 'projects/'.$id;
 
         $response = $this->httpClient->get($url)
             ->getBody()
@@ -79,12 +79,12 @@ class TodoistClient
 
     public function updateProject(Project $project): bool
     {
-        $url = 'projects/' . $project->getId();
+        $url = 'projects/'.$project->getId();
 
         $this->httpClient->post($url, [
             'json' => [
                 'name' => $project->getName(),
-            ]
+            ],
         ]);
 
         return true;
@@ -92,7 +92,7 @@ class TodoistClient
 
     public function deleteProject(Project $project): bool
     {
-        $url = 'projects/' . $project->getId();
+        $url = 'projects/'.$project->getId();
 
         $this->httpClient->delete($url);
 
