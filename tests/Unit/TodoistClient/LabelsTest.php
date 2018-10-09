@@ -6,8 +6,8 @@ namespace Tests\Unit\TodoistClient;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
-use P7v\Todoist\Entities\Label;
 use P7v\Todoist\TodoistClient;
+use P7v\Todoist\Entities\Label;
 use PHPUnit\Framework\TestCase;
 use GuzzleHttp\Handler\MockHandler;
 
