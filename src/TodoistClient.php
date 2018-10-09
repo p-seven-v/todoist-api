@@ -6,11 +6,11 @@ namespace P7v\Todoist;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
-use P7v\Todoist\Concerns\ManagesProjects;
 
 class TodoistClient
 {
-    use ManagesProjects;
+    use Concerns\ManagesProjects,
+        Concerns\ManagesLabels;
 
     /** @var string */
     private $token;
