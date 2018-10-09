@@ -11,16 +11,8 @@ use PHPUnit\Framework\TestCase;
 use P7v\Todoist\Entities\Project;
 use GuzzleHttp\Handler\MockHandler;
 
-class TodoistClientTest extends TestCase
+class ProjectsTest extends TestCase
 {
-    /** @test */
-    public function it_accepts_api_token_in_constructor()
-    {
-        $token = 'somegibberishfor32symbols1231231';
-
-        $this->assertEquals($token, (new TodoistClient($token))->token);
-    }
-
     /** @test */
     public function it_gets_list_of_all_projects()
     {
