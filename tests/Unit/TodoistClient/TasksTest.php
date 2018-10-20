@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Tests\Unit\TodoistClient;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\Psr7\Response;
 use P7v\Todoist\Entities\Task;
 use P7v\Todoist\TodoistClient;
 use PHPUnit\Framework\TestCase;
-use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Handler\MockHandler;
 
 class TasksTest extends TestCase
 {
@@ -27,7 +27,7 @@ class TasksTest extends TestCase
                 'indent' => 1,
                 'priority' => 2,
                 'comment_count' => 0,
-                'url' => "https://todoist.com/showTask?id=987654321"
+                'url' => "https://todoist.com/showTask?id=987654321",
             ],
             [
                 'id' => 9090909090,
@@ -43,7 +43,7 @@ class TasksTest extends TestCase
                     'string' => 'Oct 22',
                     'date' => '2018-10-22',
                 ],
-                'url' => "https://todoist.com/showTask?id=9090909090"
+                'url' => "https://todoist.com/showTask?id=9090909090",
             ],
         ];
 
