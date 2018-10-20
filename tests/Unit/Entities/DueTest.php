@@ -40,5 +40,4 @@ class DueTest extends TestCase
     {
         $this->assertEquals('Europe/Kiev', $this->subject->getTimezone());
     }
-
 }
