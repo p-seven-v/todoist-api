@@ -152,5 +152,4 @@ class TaskTest extends TestCase
     {
         $this->assertEquals(33, $this->subject->getCommentCount());
     }
-
 }
