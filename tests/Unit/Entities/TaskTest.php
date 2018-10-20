@@ -13,13 +13,8 @@ class TaskTest extends TestCase
     /** @var Task */
     private $subject;
 
-    /** @var Due */
-    private $due;
-
     protected function setUp()
     {
-        $this->due = new Due('tomorrow at 12', '2018-10-20', '2018-10-20T09:00:00Z', 'Europe/Kiev');
-
         $this->subject = new Task(
             111,
             2,
@@ -29,7 +24,6 @@ class TaskTest extends TestCase
             12,
             1,
             3,
-            $this->due,
             'http://example.com/todoist/111',
             33
         );
@@ -132,9 +126,15 @@ class TaskTest extends TestCase
     }
 
     /** @test */
-    public function it_gets_due_object()
+    public function it_gets_and_sets_due_object()
     {
-        $this->assertEquals($this->due, $this->subject->getDue());
+        $this->assertNull($this->subject->getDue());
+
+        $due = new Due('tomorrow at 12', '2018-10-20', '2018-10-20T09:00:00Z', 'Europe/Kiev');
+
+        $this->subject->setDue($due);
+
+        $this->assertEquals($due, $this->subject->getDue());
     }
 
     /** @test */

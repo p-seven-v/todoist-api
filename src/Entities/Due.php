@@ -18,7 +18,7 @@ class Due
     /** @var string */
     protected $timezone;
 
-    public function __construct(string $string, string $date, string $datetime, string $timezone)
+    public function __construct(string $string, string $date, string $datetime = null, string $timezone = null)
     {
         $this->string = $string;
         $this->date = $date;

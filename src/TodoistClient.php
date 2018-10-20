@@ -10,7 +10,8 @@ use GuzzleHttp\RequestOptions;
 class TodoistClient
 {
     use Concerns\ManagesProjects,
-        Concerns\ManagesLabels;
+        Concerns\ManagesLabels,
+        Concerns\ManagesTasks;
 
     /** @var string */
     private $token;

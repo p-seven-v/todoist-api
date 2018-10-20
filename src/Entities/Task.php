@@ -32,6 +32,7 @@ class Task
     /** @var int */
     protected $priority;
 
+    /** @var Due */
     protected $due;
 
     /** @var string */
@@ -40,7 +41,7 @@ class Task
     /** @var int */
     protected $commentCount;
 
-    public function __construct(int $id, int $projectId, string $content, bool $completed, array $labelsIds, int $order, int $indent, int $priority, $due, string $url, int $commentCount)
+    public function __construct(int $id, int $projectId, string $content, bool $completed, array $labelsIds, int $order, int $indent, int $priority, string $url, int $commentCount)
     {
         $this->id = $id;
         $this->projectId = $projectId;
@@ -50,7 +51,6 @@ class Task
         $this->indent = $indent;
         $this->order = $order;
         $this->priority = $priority;
-        $this->due = $due;
         $this->url = $url;
         $this->commentCount = $commentCount;
     }
@@ -130,6 +130,13 @@ class Task
     public function getDue()
     {
         return $this->due;
+    }
+
+    public function setDue(Due $due): self
+    {
+        $this->due = $due;
+
+        return $this;
     }
 
     public function getUrl(): string
